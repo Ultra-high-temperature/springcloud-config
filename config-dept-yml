@@ -1,0 +1,33 @@
+spring:
+  profiles:
+    active:dev
+
+---
+spring:
+  profiles: dev
+  application:
+    name: springcloud-config-dept-provide
+
+
+server.port=8001
+
+#三个服务名称一致是前提，通过名称访问服务提供者
+spring.application.name=springcloud-provider
+spring.datasource.url=jdbc:mysql://localhost:3306/2017_database?serverTimezone=UTC&useUnicode=true&characterEncoding=utf8
+spring.datasource.username=root
+spring.datasource.password=81234567
+spring.datasource.driver-class-name=com.mysql.jdbc.Driver
+
+mybatis.type-aliases-package=com.springcloud.pojo
+mybatis.config-location=classpath:mybatis/mybatis-config.xml
+mybatis.mapper-locations=classpath:mybatis/mapper/*.xml
+
+#eureka的配置，服务注册到哪
+eureka.client.service-url.defaultZone=http://localhost:7001/eureka,http://localhost:7002/eureka,http://localhost:7003/eureka
+#修改eureka上的默认描述信息
+eureka.instance.instance-id=springcloud-provide-dept8001-hystrix
+eureka.instance.prefer-ip-address=true
+
+#应用配置
+info.app.name=HN-springcloud
+info.comp-name=233
